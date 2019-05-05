@@ -22,7 +22,7 @@
 // };
 
 import * as sgMail from "@sendgrid/mail";
-sgMail.setApiKey('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');
+sgMail.setApiKey();
 
 export const sendEmail = async (recipient: string, url: string) => {
   const msg = {
