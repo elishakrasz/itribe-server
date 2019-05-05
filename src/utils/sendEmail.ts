@@ -22,8 +22,7 @@
 // };
 
 import * as sgMail from "@sendgrid/mail";
-
-sgMail.setApiKey(process.env.SPARKPOST_API_KEY);
+sgMail.setApiKey('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');
 
 export const sendEmail = async (recipient: string, url: string) => {
   const msg = {
