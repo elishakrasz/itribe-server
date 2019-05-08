@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import "dotenv/config";
-require("dotenv-safe").config();
+// require("dotenv-safe").config();
+require('dotenv').config()
 import { GraphQLServer } from "graphql-yoga";
 import * as session from "express-session";
 import * as connectRedis from "connect-redis";
@@ -18,12 +19,14 @@ import { createTestConn } from "./testUtils/createTestConn";
 const SESSION_SECRET = "ajslkjalksjdfkl";
 const RedisStore = connectRedis(session as any);
 
+const client = process.env.SENGRID_API_KEY
 export const startServer = async () => {
   if (process.env.NODE_ENV === "test") {
     await redis.flushall();
   }
 
-  console.log('updateMe', process.env.NODE_ENV_SENGRID_API_KEY)
+  console.log('updateMe', client)
+  // console.log('updateMe', process.env.F)
   const pubsub = new RedisPubSub(
     process.env.NODE_ENV === "production"
       ? {
