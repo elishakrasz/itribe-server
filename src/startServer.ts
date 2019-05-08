@@ -19,14 +19,11 @@ import { createTestConn } from "./testUtils/createTestConn";
 const SESSION_SECRET = "ajslkjalksjdfkl";
 const RedisStore = connectRedis(session as any);
 
-const client = process.env.SENGRID_API_KEY
 export const startServer = async () => {
   if (process.env.NODE_ENV === "test") {
     await redis.flushall();
   }
 
-  console.log('updateMe', client)
-  // console.log('updateMe', process.env.F)
   const pubsub = new RedisPubSub(
     process.env.NODE_ENV === "production"
       ? {
