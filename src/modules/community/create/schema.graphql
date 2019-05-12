@@ -1,5 +1,13 @@
 scalar Upload
 
+type File {
+    id: ID!
+    path: String!
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  }
+
 input CreateCommunityInput {
   name: String!
   picture: Upload
@@ -11,4 +19,6 @@ input CreateCommunityInput {
 
 type Mutation {
   createCommunity(input: CreateCommunityInput!): Boolean!
+  singleUpload (file: Upload!): File!
+  multipleUpload (files: [Upload!]!): [File!]!
 }
